@@ -1,0 +1,33 @@
+.login-container{
+    position: relative;
+    width: 300px;
+    margin: 80px auto;
+    padding: 20px 40px 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+.avatar{
+    width: 200px; max-height: auto;
+    margin: 10px auto 30px;
+}
+
+.form-box input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    height:40px;
+    border: 1px solid #ccc;;
+    background: #fafafa;
+}
+
+.form-box input:focus{
+    outline: 0;
+    background: #eee;
+}
+
+.form-box button.login{
+    margin-top:15px;
+    padding: 10px 20px;
+}
