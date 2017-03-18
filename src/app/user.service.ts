@@ -5,6 +5,7 @@ import { Http, Headers } from '@angular/http';
 @Injectable()
 export class UserService {
   private loggedIn = false;
+  private api = "http://localhost:1337"
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -16,18 +17,20 @@ export class UserService {
 
     return this.http
       .post(
-        '/login',
+        this.api+'/auth',
         JSON.stringify({ email, password }),
         { headers }
       )
       .map(res => res.json())
       .map((res) => {
-        if (res.success) {
-          localStorage.setItem('auth_token', res.auth_token);
+        console.log(res);
+        if (res.user) {
+          localStorage.setItem('auth_token', res.token);
           this.loggedIn = true;
+          return true;
         }
 
-        return res.success;
+        return false;
       });
   }
 
