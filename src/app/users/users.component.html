@@ -1,4 +1,32 @@
 <app-header></app-header>
-<p>
-  users works!
-</p>
+<h1>Users Admin <button class="glyphicon glyphicon-plus btn btn-success" (click)="showAddRowF()"></button></h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf = "showAddRow">
+        <td><input type="text" #email class="form-control"></td>
+        <td><input type="text" #role class="form-control"></td>
+        <td>
+          <button class="glyphicon glyphicon-plus btn btn-success" (click)="add(email.value,role.value)"></button>
+        </td>
+      </tr>
+
+      <tr *ngFor="let row of users">
+        <td><span *ngIf = "!row.isEdited">{{row.email}}</span> <input type="text" *ngIf = "row.isEdited" [(ngModel)]="row.email" class="form-control"></td>
+        <td><span *ngIf = "!row.isEdited">{{row.role}}</span> <input type="text" [(ngModel)]="row.role" *ngIf = "row.isEdited" class="form-control"></td>
+        <td>
+          <button *ngIf = "!row.isEdited" class="glyphicon glyphicon-pencil btn btn-info" (click)="showEditRow(row)"></button>
+          <button *ngIf = "!row.isEdited" class="glyphicon glyphicon-minus btn btn-danger" (click)="delete(row)"></button>
+
+          <button *ngIf = "row.isEdited" class="glyphicon glyphicon-ok btn btn-success" (click)="edit(row)"></button>
+          <button *ngIf = "row.isEdited" class="glyphicon glyphicon-remove btn btn-danger" (click)="row.isEdited = !row.isEdited"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

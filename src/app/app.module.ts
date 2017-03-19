@@ -13,6 +13,7 @@ import 'rxjs/add/operator/toPromise';
 
 //Providers
 import { UserService } from './user.service';
+import { UsersService } from './users.service';
 import { GameService } from './game.service';
 import { LoggedInGuard } from './logged-in.guard';
 
@@ -43,6 +44,7 @@ import { HeaderComponent } from './header/header.component';
   providers: [
     UserService,
     GameService,
+    UsersService,
     LoggedInGuard
   ],
   bootstrap: [AppComponent]
