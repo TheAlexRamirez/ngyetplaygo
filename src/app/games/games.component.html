@@ -1,3 +1,33 @@
-<p>
-  games works!
-</p>
+<app-header></app-header>
+<h1>Games Admin <button class="glyphicon glyphicon-plus btn btn-success" (click)="showAddRowF()"></button></h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Duration</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf = "showAddRow">
+        <td><input type="text" #name class="form-control"></td>
+        <td><input type="text" #duration class="form-control"></td>
+        <td><input type="text" #capacity class="form-control"></td>
+        <td>
+          <button class="glyphicon glyphicon-plus btn btn-success" (click)="add(name.value,duration.value,capacity.value)"></button>
+        </td>
+      </tr>
+
+      <tr *ngFor="let row of games">
+        <td>{{row.name}}</td>
+        <td>{{row.duration}}</td>
+        <td>{{row.capacity}}</td>
+        <td>
+          <button class="glyphicon glyphicon-pencil btn btn-info" (click)="edit(row)"></button>
+          <button class="glyphicon glyphicon-minus btn btn-danger" (click)="delete(row)"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

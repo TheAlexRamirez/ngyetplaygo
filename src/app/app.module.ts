@@ -13,6 +13,7 @@ import 'rxjs/add/operator/toPromise';
 
 //Providers
 import { UserService } from './user.service';
+import { GameService } from './game.service';
 import { LoggedInGuard } from './logged-in.guard';
 
 //Declarations
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { CurrentGamesComponent } from './current-games/current-games.component';
 import { GamesComponent } from './games/games.component';
 import { UsersComponent } from './users/users.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { UsersComponent } from './users/users.component';
     CurrentGamesComponent,
     LoginComponent,
     GamesComponent,
-    UsersComponent
+    UsersComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { UsersComponent } from './users/users.component';
   ],
   providers: [
     UserService,
+    GameService,
     LoggedInGuard
   ],
   bootstrap: [AppComponent]

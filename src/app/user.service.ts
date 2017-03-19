@@ -5,7 +5,7 @@ import { Http, Headers } from '@angular/http';
 @Injectable()
 export class UserService {
   private loggedIn = false;
-  private api = "http://localhost:1337"
+  private api = "http://localhost:1337";
 
   constructor(private http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -26,6 +26,8 @@ export class UserService {
         console.log(res);
         if (res.user) {
           localStorage.setItem('auth_token', res.token);
+          localStorage.setItem('data', JSON.stringify(res.user));
+
           this.loggedIn = true;
           return true;
         }
@@ -36,10 +38,15 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('data');
     this.loggedIn = false;
   }
 
   isLoggedIn() {
     return this.loggedIn;
+  }
+
+  info(){
+    return JSON.parse(localStorage.getItem("data"));
   }
 }

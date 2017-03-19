@@ -1,0 +1,12 @@
+hr.solid{
+	border-top: 1px solid #8c8b8b;
+}
+
+.medium{
+  width: 30%;
+  max-height: auto;
+  margin: 0;
+}
+.collapse{
+  margin-top: -20px;
+}
