@@ -21,12 +21,15 @@
       </tr>
 
       <tr *ngFor="let row of games">
-        <td>{{row.name}}</td>
-        <td>{{row.duration}}</td>
-        <td>{{row.capacity}}</td>
+        <td><span *ngIf = "!row.isEdited">{{row.name}}</span> <input type="text" *ngIf = "row.isEdited" [(ngModel)]="row.name" class="form-control"></td>
+        <td><span *ngIf = "!row.isEdited">{{row.duration}}</span> <input type="text" [(ngModel)]="row.duration" *ngIf = "row.isEdited" class="form-control"></td>
+        <td><span *ngIf = "!row.isEdited">{{row.capacity}}</span> <input type="text" [(ngModel)]="row.capacity" *ngIf = "row.isEdited" class="form-control"></td>
         <td>
-          <button class="glyphicon glyphicon-pencil btn btn-info" (click)="edit(row)"></button>
-          <button class="glyphicon glyphicon-minus btn btn-danger" (click)="delete(row)"></button>
+          <button *ngIf = "!row.isEdited" class="glyphicon glyphicon-pencil btn btn-info" (click)="showEditRow(row)"></button>
+          <button *ngIf = "!row.isEdited" class="glyphicon glyphicon-minus btn btn-danger" (click)="delete(row)"></button>
+
+          <button *ngIf = "row.isEdited" class="glyphicon glyphicon-ok btn btn-success" (click)="edit(row)"></button>
+          <button *ngIf = "row.isEdited" class="glyphicon glyphicon-remove btn btn-danger" (click)="row.isEdited = !row.isEdited"></button>
         </td>
       </tr>
     </tbody>

@@ -69,5 +69,26 @@ export class GameService {
       });
   }
 
+  update(row) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization',`Bearer ${this.token}`);
+
+    return this.http
+      .put(
+        this.api+'/'+row.id,
+        {
+            name : row.name,
+            duration : row.duration,
+            capacity : row.capacity
+        },
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
+  }
+
 
 }

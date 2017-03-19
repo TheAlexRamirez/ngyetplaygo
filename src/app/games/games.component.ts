@@ -42,11 +42,17 @@ export class GamesComponent implements OnInit {
   }
 
   edit(row){
-    console.log(row);
+    this.gameService.update(row).subscribe((result) => {
+      this.refresh();
+    });
   }
 
   showAddRowF(){
     this.showAddRow = !this.showAddRow;
+  }
+
+  showEditRow(row){
+    row.isEdited = !row.isEdited;
   }
 
 
