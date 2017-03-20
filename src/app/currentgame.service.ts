@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable, Subject } from 'rxjs/Rx';
 
-import * as io from 'socket.io-client';
-
 const WS_URL = 'http://localhost:1337/currentgame/subscribe';
 
 @Injectable()
@@ -51,7 +49,7 @@ export class CurrentGameService {
   }
 
   getMessages() {
-    let observable = new Observable(observer => {
+    /*let observable = new Observable(observer => {
       this.socket = io(WS_URL);
 
       console.log(this.socket);
@@ -68,7 +66,7 @@ export class CurrentGameService {
         this.socket.disconnect();
       };
     });
-    return observable;
+    return observable;*/
   }
 
   connect(){

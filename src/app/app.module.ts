@@ -17,7 +17,6 @@ import { UsersService } from './users.service';
 import { GameService } from './game.service';
 import { CurrentGameService } from './currentgame.service';
 import { LoggedInGuard } from './logged-in.guard';
-import * as io from 'socket.io-client';
 
 //Declarations
 import { LoginComponent } from './login/login.component';

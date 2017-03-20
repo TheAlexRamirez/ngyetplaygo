@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { WebsocketService } from '../websocket.service';
 import { CurrentGameService } from '../currentgame.service';
 
 @Component({
@@ -20,15 +18,15 @@ private connection;
   }
 
   ngOnInit() {
-    this.connection = this.currentgameService.getMessages().subscribe((game) => {
+    /*this.connection = this.currentgameService.getMessages().subscribe((game) => {
      //this.currentGames.push(game);
      console.log(game);
    })
-    console.log(this.connection);
+    console.log(this.connection);*/
   }
 
   ngOnDestroy() {
-   this.connection.unsubscribe();
+   //this.connection.unsubscribe();
  }
 
  refresh(){
