@@ -10,10 +10,13 @@ import { CurrentGameService } from '../currentgame.service';
 })
 export class CurrentGamesComponent implements OnInit,OnDestroy {
 private currentGames;
+private currentGamesHTTP;
 private connection;
 
   constructor(private currentgameService: CurrentGameService) {
-
+    this.currentgameService.getAll().subscribe((result) => {
+      this.currentGamesHTTP = result;
+    });
   }
 
   ngOnInit() {
@@ -28,10 +31,17 @@ private connection;
    this.connection.unsubscribe();
  }
 
+ refresh(){
+   this.currentgameService.getAll().subscribe((result) => {
+     this.currentGamesHTTP = result;
+   });
+ }
+
 
   addCurrentGame(){
     this.currentgameService.random().subscribe((result) => {
       //console.log(result);
+      this.refresh();
     });
   }
 

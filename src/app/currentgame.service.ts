@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 
 import * as io from 'socket.io-client';
 
-const WS_URL = 'ws://localhost:1337/currentgame/subscribe';
+const WS_URL = 'http://localhost:1337/currentgame/subscribe';
 
 @Injectable()
 export class CurrentGameService {
@@ -19,6 +19,22 @@ export class CurrentGameService {
     this.loggedIn = !!localStorage.getItem('auth_token');
     this.token = localStorage.getItem('auth_token');
 
+  }
+
+  getAll(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization',`Bearer ${this.token}`);
+
+    return this.http
+      .get(
+        this.api+'',
+        { headers }
+      )
+      .map(res => res.json())
+      .map((res) => {
+        return res;
+      });
   }
 
 
@@ -37,11 +53,17 @@ export class CurrentGameService {
   getMessages() {
     let observable = new Observable(observer => {
       this.socket = io(WS_URL);
+
+      console.log(this.socket);
+
+      this.socket.on("connect", () => this.connect());
       //console.log(this.socket);
-      this.socket.on('new_entry', (data) => {
+
+      this.socket.on('message', (data) => {
         console.log(data);
         observer.next(data);
       });
+
       return () => {
         this.socket.disconnect();
       };
@@ -49,7 +71,8 @@ export class CurrentGameService {
     return observable;
   }
 
-
-
+  connect(){
+    console.log('Connected');
+  }
 
 }

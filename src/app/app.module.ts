@@ -17,7 +17,6 @@ import { UsersService } from './users.service';
 import { GameService } from './game.service';
 import { CurrentGameService } from './currentgame.service';
 import { LoggedInGuard } from './logged-in.guard';
-import { WebsocketService } from './websocket.service';
 import * as io from 'socket.io-client';
 
 //Declarations
@@ -50,7 +49,6 @@ import { OrderBy } from './order-by.pipe';
     UserService,
     GameService,
     UsersService,
-    WebsocketService,
     CurrentGameService,
     LoggedInGuard
   ],

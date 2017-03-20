@@ -1,2 +1,14 @@
 <app-header></app-header>
 <h1>Current Games Feed <button class="glyphicon glyphicon-plus btn btn-success" (click)="addCurrentGame()"></button></h1>
+
+<div class="col-md-4" *ngFor="let game of currentGamesHTTP">
+  <div class="card col-md-12" style="width: 20rem;" >
+    <img class="card-img-top" alt="Card image cap" src="http://kiwaradio.com/files/Arnolds-Park-Legand-Roller-Coaster.jpg">
+    <div class="card-block">
+      <h4 class="card-title">{{game.game.name}}</h4> {{game.startsAt}}
+      <p class="card-text" *ngFor="let user of game.users">
+        <span class="glyphicon glyphicon-user"></span>  <small>{{user.email}}</small>
+      </p>
+    </div>
+  </div>
+</div>

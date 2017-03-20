@@ -1,6 +1,9 @@
 # NgYetplaygo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
+Its intented to communicate with the [Yetplaygo API](https://github.com/TheAlexRamirez/yetplaygo-api).
+
+This is the admin-like UI tool where you can CRUD over the models (User,Game) only if you have an _admin_ role. If you are a _user_ you only have access to the current games feed, that shows which current games are ready to start and the users inside them.
 
 ## Development server
 
