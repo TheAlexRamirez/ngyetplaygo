@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UsersService } from '../users.service';
+import {OrderBy} from "../order-by.pipe"
 
 
 @Component({
@@ -12,6 +13,8 @@ export class UsersComponent implements OnInit {
 
   private users;
   private showAddRow = false;
+  private orderColumn = '-email';
+  private isFilteredUp = true;
 
   constructor(private usersService: UsersService) { }
 

@@ -4,7 +4,10 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Email</th>
+        <th>Email
+          <span style="cursor:pointer"  class="glyphicon glyphicon-chevron-up" *ngIf = "isFilteredUp" (click)="orderColumn = 'email'; isFilteredUp = !isFilteredUp;"></span>
+          <span style="cursor:pointer" class="glyphicon glyphicon-chevron-down" *ngIf = "!isFilteredUp" (click)="orderColumn = '-email'; isFilteredUp = !isFilteredUp;"></span>
+        </th>
         <th>Role</th>
       </tr>
     </thead>
@@ -17,7 +20,7 @@
         </td>
       </tr>
 
-      <tr *ngFor="let row of users">
+      <tr *ngFor="let row of users | orderBy :  [orderColumn]">
         <td><span *ngIf = "!row.isEdited">{{row.email}}</span> <input type="text" *ngIf = "row.isEdited" [(ngModel)]="row.email" class="form-control"></td>
         <td><span *ngIf = "!row.isEdited">{{row.role}}</span> <input type="text" [(ngModel)]="row.role" *ngIf = "row.isEdited" class="form-control"></td>
         <td>

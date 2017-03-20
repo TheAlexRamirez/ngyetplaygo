@@ -4,8 +4,11 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Capacity</th>
+        <th>Name
+          <span style="cursor:pointer"  class="glyphicon glyphicon-chevron-up" *ngIf = "isFilteredUp" (click)="orderColumn = 'name'; isFilteredUp = !isFilteredUp;"></span>
+          <span style="cursor:pointer" class="glyphicon glyphicon-chevron-down" *ngIf = "!isFilteredUp" (click)="orderColumn = '-name'; isFilteredUp = !isFilteredUp;"></span>
+        </th>
+        <th>Capacity </th>
         <th>Duration</th>
         <th>Actions</th>
       </tr>
@@ -20,7 +23,7 @@
         </td>
       </tr>
 
-      <tr *ngFor="let row of games">
+      <tr *ngFor="let row of games | orderBy :  [orderColumn]">
         <td><span *ngIf = "!row.isEdited">{{row.name}}</span> <input type="text" *ngIf = "row.isEdited" [(ngModel)]="row.name" class="form-control"></td>
         <td><span *ngIf = "!row.isEdited">{{row.duration}}</span> <input type="text" [(ngModel)]="row.duration" *ngIf = "row.isEdited" class="form-control"></td>
         <td><span *ngIf = "!row.isEdited">{{row.capacity}}</span> <input type="text" [(ngModel)]="row.capacity" *ngIf = "row.isEdited" class="form-control"></td>

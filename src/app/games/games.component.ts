@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../game.service';
+import {OrderBy} from "../order-by.pipe"
 
 
 @Component({
@@ -11,6 +12,8 @@ export class GamesComponent implements OnInit {
 
   private games;
   private showAddRow = false;
+  private orderColumn = '-name';
+  private isFilteredUp = true;
 
   constructor(private gameService: GameService) { }
 
